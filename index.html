@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gym Management System - Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.googleapis.com" crossorigin>
+  <link rel="dns-prefetch" href="https://www.gstatic.com">
+  <link rel="dns-prefetch" href="https://www.googleapis.com">
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg">
+  <div class="container">
+    <div class="login-card">
+      <div class="logo">
+        <i class="fas fa-dumbbell"></i>
+        <h1>Gym Management System</h1>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="login">Login</button>
+        <button class="tab-btn" data-tab="register">Register</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" class="form active">
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input id="login-email" type="email" placeholder="Email" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input id="login-password" type="password" placeholder="Password" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-user-tag"></i>
+          <select id="login-role">
+            <option value="">Auto-detect Role</option>
+            <option value="admin">Admin</option>
+            <option value="member">Member</option>
+          </select>
+        </div>
+        <button type="submit" id="loginBtn" class="btn-primary">
+          <i class="fas fa-sign-in-alt"></i> Login
+        </button>
+      </form>
+
+      <!-- Register Form -->
+      <form id="registerForm" class="form">
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <input id="reg-name" type="text" placeholder="Full Name" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input id="reg-email" type="email" placeholder="Email" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input id="reg-password" type="password" placeholder="Password (min 6)" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-user-tag"></i>
+          <select id="reg-role" required>
+            <option value="">Select Role</option>
+            <option value="member">Member</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+        <button type="submit" id="registerBtn" class="btn-primary">
+          <i class="fas fa-user-plus"></i> Register
+        </button>
+      </form>
+
+      <div id="message" class="message"></div>
+    </div>
+  </div>
+
+  <script type="module" src="firebase.js"></script>
+  <script type="module" src="auth.js"></script>
+</body>
+</html> 

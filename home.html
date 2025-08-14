@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Home - Gym Management System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.googleapis.com" crossorigin>
+  <link rel="dns-prefetch" href="https://www.gstatic.com">
+  <link rel="dns-prefetch" href="https://www.googleapis.com">
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg">
+  <header class="bar">
+    <div class="bar-left">
+      <h2><i class="fas fa-home"></i> Welcome to Gym Management System</h2>
+    </div>
+          <div class="bar-right">
+        <span id="userName">User</span>
+        <button id="refreshBtn" class="btn-secondary">
+          <i class="fas fa-redo"></i> Refresh
+        </button>
+        <button id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+      </div>
+  </header>
+
+  <main class="grid">
+    <section class="card welcome-card">
+      <h3><i class="fas fa-heart"></i> Welcome!</h3>
+      <div id="welcomeMessage">
+        <p>Thank you for logging into the Gym Management System. Please select your dashboard:</p>
+      </div>
+      <div id="userInfo" class="user-info" style="display: none;">
+        <div class="user-detail">
+          <i class="fas fa-user"></i>
+          <span id="userNameDisplay">Loading...</span>
+        </div>
+        <div class="user-detail">
+          <i class="fas fa-user-tag"></i>
+          <span id="userRoleDisplay">Loading...</span>
+        </div>
+        <div class="user-detail">
+          <i class="fas fa-envelope"></i>
+          <span id="userEmailDisplay">Loading...</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3><i class="fas fa-user-shield"></i> Admin Dashboard</h3>
+      <p>Access full gym management features including member management, billing, and analytics.</p>
+      <button id="adminBtn" class="btn-primary">
+        <i class="fas fa-arrow-right"></i> Go to Admin Dashboard
+      </button>
+    </section>
+
+    <section class="card">
+      <h3><i class="fas fa-user"></i> Member Dashboard</h3>
+      <p>View your profile, bills, notifications, and gym information.</p>
+      <button id="memberBtn" class="btn-secondary">
+        <i class="fas fa-arrow-right"></i> Go to Member Dashboard
+      </button>
+    </section>
+  </main>
+
+  <!-- Loading Overlay -->
+  <div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-spinner">
+      <i class="fas fa-spinner fa-spin"></i>
+      <p>Loading your account...</p>
+      <div class="loading-progress">
+        <div class="progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="firebase.js"></script>
+  <script type="module" src="js/home.js"></script>
+</body>
+</html> 

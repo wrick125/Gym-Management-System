@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Dashboard – Gym Management System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.googleapis.com" crossorigin>
+  <link rel="dns-prefetch" href="https://www.gstatic.com">
+  <link rel="dns-prefetch" href="https://www.googleapis.com">
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg">
+  <header class="bar">
+    <div class="bar-left">
+      <h2><i class="fas fa-dumbbell"></i> Admin Dashboard</h2>
+    </div>
+    <div class="bar-right">
+      <span id="adminName">Admin</span>
+      <button id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+  </header>
+
+  <main class="grid">
+    <!-- Dashboard Stats -->
+    <section class="card stats-card">
+      <h3><i class="fas fa-chart-bar"></i> Dashboard Overview</h3>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <i class="fas fa-users"></i>
+          <div>
+            <span class="stat-number" id="totalMembers">0</span>
+            <span class="stat-label">Total Members</span>
+          </div>
+        </div>
+        <div class="stat-item">
+          <i class="fas fa-receipt"></i>
+          <div>
+            <span class="stat-number" id="totalBills">0</span>
+            <span class="stat-label">Total Bills</span>
+          </div>
+        </div>
+        <div class="stat-item">
+          <i class="fas fa-dollar-sign"></i>
+          <div>
+            <span class="stat-number" id="totalRevenue">$0</span>
+            <span class="stat-label">Revenue</span>
+          </div>
+        </div>
+        <div class="stat-item">
+          <i class="fas fa-box"></i>
+          <div>
+            <span class="stat-number" id="totalItems">0</span>
+            <span class="stat-label">Store Items</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Add Member -->
+    <section class="card">
+      <h3><i class="fas fa-user-plus"></i> Add/Update Member</h3>
+      <input id="m-id" placeholder="Member ID (for update)" />
+      <input id="m-name" placeholder="Full Name" />
+      <input id="m-email" type="email" placeholder="Email" />
+      <input id="m-phone" placeholder="Phone Number" />
+      <input id="m-join" type="date" />
+      <select id="m-package">
+        <option value="">Select Package</option>
+      </select>
+      <div class="row">
+        <button id="addMemberBtn" class="btn-success">
+          <i class="fas fa-plus"></i> Add Member
+        </button>
+        <button id="updateMemberBtn" class="btn-warning">
+          <i class="fas fa-edit"></i> Update
+        </button>
+        <button id="deleteMemberBtn" class="danger">
+          <i class="fas fa-trash"></i> Delete
+        </button>
+      </div>
+    </section>
+
+    <!-- Create Bill -->
+    <section class="card">
+      <h3><i class="fas fa-file-invoice-dollar"></i> Create Bill</h3>
+      <select id="b-memberId" required>
+        <option value="">Select Member</option>
+      </select>
+      <input id="b-amount" type="number" placeholder="Amount" step="0.01" />
+      <input id="b-receipt" placeholder="Receipt Number" />
+      <select id="b-status">
+        <option value="paid">Paid</option>
+        <option value="due">Due</option>
+        <option value="overdue">Overdue</option>
+      </select>
+      <button id="createBillBtn" class="btn-success">
+        <i class="fas fa-plus"></i> Create Bill
+      </button>
+    </section>
+
+    <!-- Fee Packages -->
+    <section class="card">
+      <h3><i class="fas fa-tags"></i> Fee Packages</h3>
+      <input id="p-id" placeholder="Package ID (auto-generated)" readonly />
+      <input id="p-name" placeholder="Package Name" />
+      <input id="p-price" type="number" placeholder="Price" step="0.01" />
+      <input id="p-duration" type="number" placeholder="Duration (months)" />
+      <textarea id="p-description" placeholder="Package Description"></textarea>
+      <div class="row">
+        <button id="addPackageBtn" class="btn-success">
+          <i class="fas fa-plus"></i> Add Package
+        </button>
+        <button id="deletePackageBtn" class="danger">
+          <i class="fas fa-trash"></i> Delete
+        </button>
+      </div>
+    </section>
+
+    <!-- Notifications -->
+    <section class="card">
+      <h3><i class="fas fa-bell"></i> Send Notification</h3>
+      <select id="n-target">
+        <option value="all">All Members</option>
+        <option value="premium">Premium Members</option>
+        <option value="basic">Basic Members</option>
+      </select>
+      <textarea id="n-message" placeholder="Your message..." rows="4"></textarea>
+      <button id="sendNotificationBtn" class="btn-primary">
+        <i class="fas fa-paper-plane"></i> Send Notification
+      </button>
+    </section>
+
+    <!-- Supplement Store -->
+    <section class="card">
+      <h3><i class="fas fa-store"></i> Supplement Store</h3>
+      <input id="s-id" placeholder="Item ID (auto-generated)" readonly />
+      <input id="s-name" placeholder="Item Name" />
+      <input id="s-price" type="number" placeholder="Price" step="0.01" />
+      <input id="s-stock" type="number" placeholder="Stock Quantity" />
+      <textarea id="s-description" placeholder="Item Description"></textarea>
+      <div class="row">
+        <button id="addStoreItemBtn" class="btn-success">
+          <i class="fas fa-plus"></i> Add Item
+        </button>
+        <button id="deleteStoreItemBtn" class="danger">
+          <i class="fas fa-trash"></i> Delete
+        </button>
+      </div>
+      <div id="storeList" class="table-container"></div>
+      <div id="storePagination" class="table-pagination">
+        <button id="storePrev" class="btn-secondary">Prev</button>
+        <span id="storePageInfo"></span>
+        <button id="storeNext" class="btn-secondary">Next</button>
+      </div>
+    </section>
+
+    <!-- Diet Plans -->
+    <section class="card">
+      <h3><i class="fas fa-apple-alt"></i> Diet Plan Management</h3>
+      <select id="d-memberId" required>
+        <option value="">Select Member</option>
+      </select>
+      <textarea id="d-plan" placeholder="Diet plan details..." rows="6"></textarea>
+      <button id="saveDietBtn" class="btn-success">
+        <i class="fas fa-save"></i> Save Diet Plan
+      </button>
+    </section>
+
+    <!-- Export Reports -->
+    <section class="card">
+      <h3><i class="fas fa-download"></i> Export Reports</h3>
+      <div class="export-buttons">
+        <button id="exportMembersBtn" class="btn-secondary">
+          <i class="fas fa-users"></i> Export Members
+        </button>
+        <button id="exportBillsBtn" class="btn-secondary">
+          <i class="fas fa-file-invoice"></i> Export Bills
+        </button>
+        <button id="exportPackagesBtn" class="btn-secondary">
+          <i class="fas fa-tags"></i> Export Packages
+        </button>
+        <button id="exportStoreBtn" class="btn-secondary">
+          <i class="fas fa-store"></i> Export Store
+        </button>
+      </div>
+    </section>
+
+    <!-- Members Table -->
+    <section class="card span-2">
+      <h3><i class="fas fa-users"></i> Members List</h3>
+      <div class="table-actions">
+        <input type="text" id="memberSearch" placeholder="Search members..." />
+        <select id="memberFilter">
+          <option value="">All Members</option>
+          <option value="active">Active</option>
+          <option value="inactive">Inactive</option>
+        </select>
+      </div>
+      <div id="membersTable" class="table-container"></div>
+      <div id="membersPagination" class="table-pagination">
+        <button id="membersPrev" class="btn-secondary">Prev</button>
+        <span id="membersPageInfo"></span>
+        <button id="membersNext" class="btn-secondary">Next</button>
+      </div>
+    </section>
+
+    <!-- Bills Table -->
+    <section class="card span-2">
+      <h3><i class="fas fa-file-invoice-dollar"></i> Bills List</h3>
+      <div class="table-actions">
+        <input type="text" id="billSearch" placeholder="Search bills..." />
+        <select id="billFilter">
+          <option value="">All Bills</option>
+          <option value="paid">Paid</option>
+          <option value="due">Due</option>
+          <option value="overdue">Overdue</option>
+        </select>
+      </div>
+      <div id="billsTable" class="table-container"></div>
+      <div id="billsPagination" class="table-pagination">
+        <button id="billsPrev" class="btn-secondary">Prev</button>
+        <span id="billsPageInfo"></span>
+        <button id="billsNext" class="btn-secondary">Next</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Loading Overlay -->
+  <div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-spinner">
+      <i class="fas fa-spinner fa-spin"></i>
+      <p>Loading...</p>
+    </div>
+  </div>
+
+  <script type="module" src="firebase.js"></script>
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html> 

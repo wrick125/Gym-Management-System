@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login Test - Gym Management System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg">
+  <div class="container">
+    <div class="login-card">
+      <div class="logo">
+        <i class="fas fa-bug"></i>
+        <h1>Login Test</h1>
+      </div>
+
+      <div class="test-controls">
+        <button id="testAuth" class="btn-primary">
+          <i class="fas fa-fire"></i> Test Firebase Auth
+        </button>
+        <button id="testFirestore" class="btn-secondary">
+          <i class="fas fa-database"></i> Test Firestore
+        </button>
+        <button id="testLogin" class="btn-success">
+          <i class="fas fa-sign-in-alt"></i> Test Login Process
+        </button>
+      </div>
+
+      <div class="test-form">
+        <h3>Quick Login Test</h3>
+        <input id="testEmail" type="email" placeholder="Email" />
+        <input id="testPassword" type="password" placeholder="Password" />
+        <button id="quickLogin" class="btn-primary">
+          <i class="fas fa-rocket"></i> Quick Login
+        </button>
+      </div>
+
+      <div class="test-form">
+        <h3>Create Test Account</h3>
+        <input id="regName" type="text" placeholder="Full Name" />
+        <input id="regEmail" type="email" placeholder="Email" />
+        <input id="regPassword" type="password" placeholder="Password" />
+        <select id="regRole">
+          <option value="admin">Admin</option>
+          <option value="member">Member</option>
+        </select>
+        <button id="createTestAccount" class="btn-success">
+          <i class="fas fa-user-plus"></i> Create Test Account
+        </button>
+      </div>
+
+      <div class="test-results">
+        <h3>Test Results</h3>
+        <div id="testOutput" class="test-output"></div>
+      </div>
+
+      <div class="test-actions">
+        <a href="index.html" class="btn-secondary">
+          <i class="fas fa-arrow-left"></i> Back to Main Login
+        </a>
+        <a href="debug.html" class="btn-warning">
+          <i class="fas fa-bug"></i> Full Debug Console
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="firebase.js"></script>
+  <script type="module" src="js/test-login.js"></script>
+</body>
+</html> 

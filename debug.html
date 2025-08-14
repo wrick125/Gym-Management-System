@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Debug - Gym Management System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg">
+  <div class="container">
+    <div class="login-card">
+      <div class="logo">
+        <i class="fas fa-bug"></i>
+        <h1>Debug Console</h1>
+      </div>
+
+      <div class="debug-controls">
+        <button id="testFirebase" class="btn-primary">
+          <i class="fas fa-fire"></i> Test Firebase Connection
+        </button>
+        <button id="resetLoading" class="btn-warning">
+          <i class="fas fa-redo"></i> Reset Loading States
+        </button>
+        <button id="clearConsole" class="btn-secondary">
+          <i class="fas fa-trash"></i> Clear Console
+        </button>
+      </div>
+
+      <div class="debug-info">
+        <h3>Debug Information</h3>
+        <div id="debugOutput" class="debug-output"></div>
+      </div>
+
+      <div class="debug-actions">
+        <a href="index.html" class="btn-primary">
+          <i class="fas fa-arrow-left"></i> Back to Login
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="firebase.js"></script>
+  <script type="module" src="js/debug.js"></script>
+</body>
+</html> 
