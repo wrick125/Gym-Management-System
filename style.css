@@ -28,6 +28,7 @@ body {
   color: var(--text);
   min-height: 100vh;
   line-height: 1.6;
+  font-size: clamp(14px, 1.6vw, 16px);
 }
 
 .bg {
@@ -283,7 +284,7 @@ body {
   padding: 20px;
   max-width: 1400px;
   margin: 0 auto;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 .card {
@@ -455,6 +456,78 @@ tr:hover {
   .input-group select {
     padding: 12px 12px 12px 40px;
   }
+}
+
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 640px) {
+  .bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .bar-left, .bar-right {
+    justify-content: space-between;
+  }
+  .bar-right button {
+    flex: 1;
+  }
+
+  .card input,
+  .card select,
+  .card textarea {
+    font-size: 16px;
+  }
+  .card button,
+  .btn-primary,
+  .btn-secondary,
+  .btn-success,
+  .btn-warning {
+    min-height: 44px;
+    width: 100%;
+  }
+  .btn-small {
+    min-height: 36px;
+  }
+
+  table {
+    font-size: 0.9rem;
+  }
+  th, td {
+    padding: 10px 12px;
+  }
+  table th:first-child,
+  table td:first-child {
+    display: none;
+  }
+  .table-actions {
+    flex-direction: column;
+  }
+  .table-actions input,
+  .table-actions select,
+  .table-actions button {
+    width: 100%;
+  }
+
+  .table-pagination {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .loading-spinner i {
+    font-size: 2.2rem;
+  }
+}
+
+/* Table Pagination */
+.table-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.table-pagination span {
+  color: var(--text-muted);
 }
 
 /* Loading States */
@@ -644,6 +717,7 @@ tr:hover {
 /* Table Enhancements */
 .table-container {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .table-wrapper {
